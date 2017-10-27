@@ -1,0 +1,19 @@
+{% extends 'common/base.html' %}
+
+{% from 'common/macros.html' import pagination_show %}
+
+{% block title %}首页{% endblock %}
+
+{% block page_content %}
+{{ wtf.quick_form(form) }}
+
+{% for p in posts %}
+<hr />
+<div style="float:right;">{{moment(p.timestamp).fromNow()}}</div>
+<div><a href="#"><b>{{p.user.username}}</b></a></div>
+<div><a href="#">{{p.content}}</a></div>
+{% endfor %}
+<hr />
+{{pagination_show(pagination, 'main.index')}}
+
+{% endblock %}
